@@ -15,14 +15,12 @@ const groqClient = new Groq({ apiKey: process.env.GROQ_API_KEY });
 app.post('/summarize', async (req, res) => {
   const { transcript, prompt } = req.body;
   try {
-    // Use chat completions API of Groq SDK
     const chatCompletion = await groqClient.chat.completions.create({
       model: 'llama-3.3-70b-versatile',
       messages: [
         { role: 'user', content: `${prompt}\n${transcript}` }
       ]
     });
-
     const summary = chatCompletion.choices[0].message.content;
     res.json({ summary });
   } catch (err) {
@@ -40,14 +38,12 @@ app.post('/send-email', async (req, res) => {
       pass: process.env.GMAIL_PASS,
     }
   });
-
   let mailOptions = {
     from: process.env.GMAIL_USER,
     to,
     subject: 'Meeting Summary',
     text: summary,
   };
-
   try {
     await transporter.sendMail(mailOptions);
     res.json({ message: 'Email sent!' });
@@ -55,6 +51,11 @@ app.post('/send-email', async (req, res) => {
     console.error('Email send error:', err);
     res.status(500).json({ error: 'Failed to send email' });
   }
+});
+
+// Add root route handler here
+app.get('/', (req, res) => {
+  res.send('Backend API is running');
 });
 
 const PORT = process.env.PORT || 5000;
