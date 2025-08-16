@@ -75,6 +75,7 @@
   </div>
 
   <script>
+    const BACKEND_URL = "https://ai-meeting-summarizer-backend-41cx.onrender.com";
     let transcriptText = "";
 
     // Load transcript from uploaded file
@@ -91,7 +92,7 @@
       const prompt = document.getElementById('prompt').value;
       if (!transcriptText || !prompt) return alert("Please upload transcript and enter prompt!");
 
-      const response = await fetch("http://localhost:5000/summarize", {
+      const response = await fetch(`${BACKEND_URL}/summarize`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ transcript: transcriptText, prompt: prompt })
@@ -110,7 +111,7 @@
       const to = document.getElementById("emailInput").value;
       if (!summary || !to) return alert("Please enter summary and recipient email.");
 
-      const response = await fetch("http://localhost:5000/send-email", {
+      const response = await fetch(`${BACKEND_URL}/send-email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ summary, to })
