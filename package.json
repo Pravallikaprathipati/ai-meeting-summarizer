@@ -1,0 +1,23 @@
+{
+  "name": "ai-meeting-summarizer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@ai-sdk/groq": "^2.0.10",
+    "@sendgrid/mail": "^8.1.5",
+    "ai": "^5.0.15",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "groq-sdk": "^0.30.0",
+    "nodemailer": "^7.0.5"
+  }
+}

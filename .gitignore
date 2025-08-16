@@ -1,0 +1,18 @@
+# Ignore Node modules folder (dependencies)
+node_modules/
+
+# Ignore environment variable files
+.env
+
+# Ignore npm log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional: Ignore OS specific files
+.DS_Store
+Thumbs.db
+
+# Optional: Ignore IDE/editor specific files/folders
+.vscode/
+.idea/
